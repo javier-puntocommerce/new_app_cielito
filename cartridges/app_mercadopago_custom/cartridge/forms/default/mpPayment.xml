@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<form>
+    <field formid="cardholdername" label="label.input.creditcard.owner" type="string" mandatory="true" max-length="16" />
+    <field formid="cardnumber" label="label.input.creditcard.number" type="string" mandatory="true" max-length="20" />
+    <field formid="cardExpirationDate" label="label.input.creditcard.owner" type="string" mandatory="true" max-length="7"/>
+    <field formid="issuer" lable="label.input.payment.issuer" type="string" max-length="50" />
+    <field formid="installments" lable="label.input.payment.installments" type="string" />
+    <field formid="securityCode" label="profile.securitycode" type="string" mandatory="true" max-length="4" />
+    <field formid="saveCard" label="label.save.card" binding="saveCard" type="boolean" mandatory="false" checked="true" />
+    <action formid="mercadopago" valid-form="false"/>
+</form>

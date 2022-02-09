@@ -1,0 +1,103 @@
+<isdecorate template="common/layout/checkout">
+
+<div style="height: 100px">
+  
+</div>
+
+  <div class="d-flex justify-content-center m-5">
+    <form id="form-checkout" 
+      action="${URLUtils.url('MercadoPago-SavePayment')}" 
+      method="POST"
+    >
+      
+      <div class="form-group">
+        <label class="form-control-label" for="cardholdername">
+              <isprint value="${pdict.mpPaymentForm.cardholdername.label}" encoding="htmlcontent" />
+          </label>
+        <input type="text" id="cardholdername" <isprint value="${pdict.mpPaymentForm.cardholdername.attributes}" encoding="off" />>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-control-label" for="cardnumber">
+            <isprint value="${pdict.mpPaymentForm.cardnumber.label}" encoding="htmlcontent" />
+        </label>
+        <input type="text" id="cardnumber" <isprint value="${pdict.mpPaymentForm.cardnumber.attributes}" encoding="off" />>
+      </div>
+
+      <div class="form-group">
+        <label class="form-control-label" for="cardExpirationDate">
+            <isprint value="${pdict.mpPaymentForm.cardExpirationDate.label}" encoding="htmlcontent" />
+        </label>
+        <input type="text" id="cardExpirationDate" <isprint value="${pdict.mpPaymentForm.cardExpirationDate.attributes}" encoding="off" />>
+      </div>
+
+      <div class="form-group">
+        <label class="form-control-label" for="securityCode">
+            <isprint value="${pdict.mpPaymentForm.securityCode.label}" encoding="htmlcontent" />
+        </label>
+        <input type="text" id="securityCode" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-control-label" for="issuer">
+            <isprint value="${pdict.mpPaymentForm.issuer.label}" encoding="htmlcontent" />
+        </label>
+        <select id="issuer"></select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-control-label" for="installments">
+            <isprint value="${pdict.mpPaymentForm.installments.label}" encoding="htmlcontent" />
+        </label>
+        <select id="installments"></select>
+      </div>
+
+        <button type="submit" name="mercadopago">Pagar</button>
+
+    </form>
+  </div>
+
+  <script src="https://sdk.mercadopago.com/js/v2"></script>
+  <script>
+      const mp = new MercadoPago('APP_USR-21cd486c-3030-4400-b6f4-b1ffb4c6bc27');
+      const cardForm = mp.cardForm({
+        amount: "100.5",
+        autoMount: true,
+        form: {
+          id: "form-checkout",
+          cardholderName: {
+            id: "cardholdername",
+            placeholder: "Card Holder",
+          },
+          cardNumber: {
+            id: "cardnumber",
+            placeholder: "Card Number",
+          },
+          cardExpirationDate: {
+            id: "cardExpirationDate",
+            placeholder: "Expiration date (MM/YYYY)",
+          },
+          securityCode: {
+            id: "securityCode",
+            placeholder: "CVV",
+          },
+          installments: {
+            id: "installments",
+            placeholder: "Installments",
+          },
+          issuer: {
+            id: "issuer",
+            placeholder: "Issuer",
+          },
+        },
+        callbacks: {
+          onFormMounted: error => {
+            if (error) return console.warn("Form Mounted handling error: ", error);
+            console.log("Form mounted");
+          }
+        },
+      });
+</script>
+
+
+</isdecorate>
