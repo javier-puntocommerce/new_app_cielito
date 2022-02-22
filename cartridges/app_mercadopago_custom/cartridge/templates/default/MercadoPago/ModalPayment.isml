@@ -1,0 +1,51 @@
+<div class="modal fade" id="mpPayment" tabindex="-1" role="dialog" aria-labelledby="mpPayment">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header ">
+                <h4 class="modal-title" id="mpPayment">${Resource.msg('heading.delete.payment.confirmation.modal','payment',null)}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form
+                  action="${URLUtils.url('CheckoutServices-SavePayment')}" 
+                  method="POST"
+                  id="mpPaymentForm"
+                  <isprint value=${pdict.mercadopago.mpPaymentForm.attributes} encoding="off" /> novalidate
+                >
+                  <div class="d-flex flex-column">
+                    <div class="form-group d-flex justify-content-between">
+                      
+                      <label class="form-control-label" for="cardholdername">
+                            <isprint value="${pdict.mercadopago.mpPaymentForm.cardholdername.label}" encoding="htmlcontent" />
+                        </label>
+                      <input type="text" id="cardholdername" <isprint value="${pdict.mercadopago.mpPaymentForm.cardholdername.attributes}" encoding="off" />/>
+                    </div>
+                    
+                    <div class="form-group d-flex justify-content-between">
+                      <label class="form-control-label" for="cardnumber">
+                          <isprint value="${pdict.mercadopago.mpPaymentForm.cardnumber.label}" encoding="htmlcontent" />
+                      </label>
+                      <input type="text" id="cardnumber" <isprint value="${pdict.mercadopago.mpPaymentForm.cardnumber.attributes}" encoding="off" />/>
+                    </div>
+
+                    <div class="form-group d-flex justify-content-between">
+                      <label class="form-control-label" for="cardExpirationDate">
+                          <isprint value="${pdict.mercadopago.mpPaymentForm.cardExpirationDate.label}" encoding="htmlcontent" />
+                      </label>
+                      <input type="text" id="cardExpirationDate" <isprint value="${pdict.mercadopago.mpPaymentForm.cardExpirationDate.attributes}" encoding="off" />/>
+                    </div>
+
+                    <div class="form-group d-flex justify-content-between">
+                      <label class="form-control-label" for="securityCode">
+                          <isprint value="${pdict.mercadopago.mpPaymentForm.securityCode.label}" encoding="htmlcontent" />
+                      </label>
+                      <input type="text" id="securityCode" <isprint value="${pdict.mercadopago.mpPaymentForm.securityCode.attributes}" encoding="off" />/>
+                    </div>
+                      <button type="submit" name="mercadopago">Next</button>
+                  </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>

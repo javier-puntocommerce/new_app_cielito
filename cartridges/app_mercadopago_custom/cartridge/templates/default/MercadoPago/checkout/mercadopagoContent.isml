@@ -1,0 +1,9 @@
+
+<isinclude template=MercadoPago/ModalPayment />
+
+<div class="tab-pane mercadopago-content " id="mercadopago-content" role="tabpanel">
+  <fieldset class="d-flex justify-content-center m-5">
+    <button type="button" data-toggle="modal"
+	                        data-target="#mpPayment">Launch Modal</button>
+  </fieldset>  
+</div>
