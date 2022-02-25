@@ -77,18 +77,18 @@ server.post("SavePayment", server.middleware.https, (req, res, next) => {
 
   const tokenId = cartToken.id;
 
-  this.on("route:BeforeComplete", function (req, res) {
-    res.json({
-      cardholdername: cardholdername,
-      cardnumber: cardnumber,
-      cardExpirationDate: cardExpirationDate,
-      securityCode: securityCode,
-      token: token,
-      paymentMethods: paymentMethods,
-      cartToken: cartToken,
-      payment: payment,
-    });
-  });
+  const viewData = res.getViewData();
+  viewData.mercadopago = {
+    cardholdername: cardholdername,
+    cardnumber: cardnumber,
+    cardExpirationDate: cardExpirationDate,
+    securityCode: securityCode,
+    token: token,
+    paymentMethods: paymentMethods,
+    cartToken: cartToken,
+  };
+
+  res.setViewData(viewData);
 
   return next();
 });
